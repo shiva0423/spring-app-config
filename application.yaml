@@ -7,25 +7,3 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
-
-
-spring:
-  cloud:
-    gateway:
-      server:
-        webmvc:
-          routes:
-            - id: order-service
-              uri: lb://ORDERSERVICE
-              predicates:
-                - Path=/order/**
-
-            - id: product-service
-              uri: lb://PRODUCTSERVICE
-              predicates:
-                - Path=/product/**
-
-            - id: payment-service
-              uri: lb://PAYMENTSERVICE
-              predicates:
-                - Path=/payment/**
