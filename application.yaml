@@ -12,22 +12,20 @@ eureka:
 spring:
   cloud:
     gateway:
-      mvc:
-        routes:
+      server:
+        webmvc:
+          routes:
+            - id: order-service
+              uri: lb://ORDERSERVICE
+              predicates:
+                - Path=/order/**
 
-          - id: order-service
-            uri: lb://ORDERSERVICE
-            predicates:
-              - Path=/order/**
+            - id: product-service
+              uri: lb://PRODUCTSERVICE
+              predicates:
+                - Path=/product/**
 
-
-          - id: product-service
-            uri: lb://PRODUCTSERVICE
-            predicates:
-              - Path=/product/**
-
-
-          - id: payment-service
-            uri: lb://PAYMENTSERVICE
-            predicates:
-              - Path=/payment/**
+            - id: payment-service
+              uri: lb://PAYMENTSERVICE
+              predicates:
+                - Path=/payment/**
