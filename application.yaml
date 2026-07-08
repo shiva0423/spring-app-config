@@ -16,16 +16,16 @@ spring:
         webmvc:
           routes:
             - id: order-service
-              uri: lb://ORDERSERVICE
+              uri: lb://OrderService
               predicates:
                 - Path=/order/**
 
             - id: product-service
-              uri: lb://PRODUCTSERVICE
+              uri: lb://ProductService
               predicates:
                 - Path=/product/**
 
             - id: payment-service
-              uri: lb://PAYMENTSERVICE
+              uri: lb://PaymentService
               predicates:
                 - Path=/payment/**
