@@ -22,7 +22,7 @@ spring:
               filters:
                 - name: CircuitBreaker
                   args:
-                    name: orderServiceCircuitBreaker
+                    id: orderServiceCircuitBreaker
                     fallbackUri: forward:/fallback/order  
 
             - id: product-service
@@ -32,7 +32,7 @@ spring:
               filters:
                 - name: CircuitBreaker
                   args:
-                    name: productServiceCircuitBreaker
+                    id: productServiceCircuitBreaker
                     fallbackUri: forward:/fallback/product  
             - id: payment-service
               uri: lb://PAYMENTSERVICE
@@ -41,6 +41,6 @@ spring:
               filters:
                 - name: CircuitBreaker
                   args:
-                    name: paymentServiceCircuitBreaker
+                    id: paymentServiceCircuitBreaker
                     fallbackUri: forward:/fallback/payment  
   
