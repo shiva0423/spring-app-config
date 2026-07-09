@@ -19,13 +19,29 @@ spring:
               uri: lb://OrderService
               predicates:
                 - Path=/order/**
+              filters:
+              - name: CircuitBreaker
+                args:
+                  name: OrderServiceCircuitBreaker
+                  fallbackUri: forward:/orderServiceFallBack
 
             - id: product-service
               uri: lb://ProductService
               predicates:
                 - Path=/product/**
+              filters:
+              - name: CircuitBreaker
+                args:
+                  name: ProductServiceCircuitBreaker
+                  fallbackUri: forward:/productServiceFallBack  
+                
 
             - id: payment-service
               uri: lb://PaymentService
               predicates:
                 - Path=/payment/**
+              filters:
+              - name: CircuitBreaker
+                args:
+                  name: PaymentServiceCircuitBreaker
+                  fallbackUri: forward:/paymentServiceFallBack  
